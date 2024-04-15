@@ -1,9 +1,8 @@
-{
-    "properties":[
+[
     {
         "id": 1,
         "name": null,
-        "company": 8,
+        "company": 2,
         "fee_rate": "1.00",
         "num_condo_units": 4,
         "num_parking_units": 1,
@@ -16,7 +15,7 @@
             {
                 "id": 1,
                 "public_profile": null,
-                "location": "121",
+                "location": "101",
                 "purchase_price": "1000000.00",
                 "rent_price": "1500.00",
                 "property_fee": 0.0,
@@ -29,7 +28,7 @@
             {
                 "id": 2,
                 "public_profile": null,
-                "location": "122",
+                "location": "101",
                 "purchase_price": "1000000.00",
                 "rent_price": "1500.00",
                 "property_fee": 0.0,
@@ -42,7 +41,7 @@
             {
                 "id": 3,
                 "public_profile": null,
-                "location": "123",
+                "location": "101",
                 "purchase_price": "1000000.00",
                 "rent_price": "1500.00",
                 "property_fee": 0.0,
@@ -55,7 +54,7 @@
             {
                 "id": 5,
                 "public_profile": 5,
-                "location": "124",
+                "location": "101",
                 "purchase_price": "1500000.00",
                 "rent_price": "1000.00",
                 "property_fee": 934.0,
@@ -68,7 +67,7 @@
         ],
         "parking_units": [
             {
-                "id": 111,
+                "id": 1,
                 "public_profile": null,
                 "location": "2",
                 "purchase_price": "10000.00",
@@ -83,7 +82,7 @@
         ],
         "storage_units": [
             {
-                "id": 112,
+                "id": 1,
                 "public_profile": null,
                 "location": "2",
                 "purchase_price": "10000.00",
@@ -96,7 +95,7 @@
                 "property": 1
             },
             {
-                "id": 113,
+                "id": 2,
                 "public_profile": null,
                 "location": "3",
                 "purchase_price": "10000.00",
@@ -127,7 +126,7 @@
             {
                 "id": 4,
                 "public_profile": null,
-                "location": "112",
+                "location": "101",
                 "purchase_price": "1000000.00",
                 "rent_price": "1500.00",
                 "property_fee": 0.0,
@@ -158,7 +157,7 @@
             {
                 "id": 6,
                 "public_profile": 5,
-                "location": "111",
+                "location": "105",
                 "purchase_price": "100000.00",
                 "rent_price": "1200.00",
                 "property_fee": 1500.0,
@@ -171,7 +170,7 @@
             {
                 "id": 7,
                 "public_profile": 5,
-                "location": "111",
+                "location": "106",
                 "purchase_price": "100000.00",
                 "rent_price": "1600.00",
                 "property_fee": 1700.0,
@@ -184,7 +183,7 @@
             {
                 "id": 8,
                 "public_profile": 5,
-                "location": "111",
+                "location": "108",
                 "purchase_price": "100000.00",
                 "rent_price": "1600.00",
                 "property_fee": 1600.0,
@@ -296,7 +295,7 @@
     {
         "id": 8,
         "name": null,
-        "company": 11,
+        "company": 8,
         "fee_rate": "1.00",
         "num_condo_units": 0,
         "num_parking_units": 0,
@@ -326,5 +325,5 @@
         "parking_units": [],
         "storage_units": [],
         "image": "https://soen390-team18-s3.s3.amazonaws.com/property_images/defaultProperty.jpg?AWSAccessKeyId=AKIAUSU5ZBEMQ2AMDONI&Signature=NAMUZ4KBC1YwjQHdAskiO%2FjtzeA%3D&Expires=1712115936"
-    }]
-}
+    }
+]
