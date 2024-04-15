@@ -1,0 +1,50 @@
+main {
+  min-height: 85vh;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns by default */
+  gap: 20px;
+  padding: 20px;
+  max-height: 700px;
+  overflow-y: auto;
+  border-color: black;
+  border: 1px;
+  border-style: solid;
+}
+
+.grid-header {
+  grid-column: 1 / -1; /* Span all columns */
+  text-align: center;
+}
+
+@media (max-width: 1000px) {
+  .grid-container {
+      grid-template-columns: repeat(2, 1fr); /* Change to 2 columns for screens smaller than 1000px */
+  }
+}
+
+@media (max-width: 800px) {
+  .grid-container {
+      grid-template-columns: 1fr; /* Change to 1 column for screens smaller than 500px */
+  }
+}
+
+/* LargeTitle.css */
+.large-title-container {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+  background-color: rgb(15, 121, 172); 
+  border: 1px solid #495057;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.large-title-text {
+  text-align: center;
+  color: white; /* Dark gray text */
+  font-size: 2.5rem; /* Large font size */
+  /* font-weight: bold; */
+  margin: 0; /* Remove default margins */
+}
