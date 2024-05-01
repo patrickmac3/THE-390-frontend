@@ -38,9 +38,10 @@ const SendRegistrationButton = () => {
     const [users, setUsers] = useState([]);
 
     // function to go through the properties and append its units to the units state
-    const getUnitsFromProperties = (properties) => {
+    const getUnitsFromProperties = (properties, companyId) => {
         let allUnits = [];
         Object.values(properties).forEach(property => {
+            // if (property.company == companyId) {
             // Destructure the units arrays from the current property
             const { condo_units, parking_units, storage_units } = property;
 
@@ -50,6 +51,7 @@ const SendRegistrationButton = () => {
                     allUnits = [...allUnits, ...unitsArray];
                 }
             });
+            // }
         })
         const unitsWithNullUser = allUnits.filter(unit => unit.public_profile === null);
         // Now update the state a single time
@@ -70,14 +72,19 @@ const SendRegistrationButton = () => {
     //FIXME always getting 500 error, could be an email not being read
     // even though i added async and await for this function call
     const SendRegistrationkeyRequest = async () => {
+        console.log(parseInt(selectedUnit.id))
+        console.log(selectedUser.user.email)
+        console.log(parseInt(companyId, 10))
+        console.log(isOwner)
         try {
             //FIXME i hard coded values and still didn't work. tried postman and stilll didn't work, might not be post.
             const response = await axiosInstance.post('/registration-keys/condo-registration-key/', {
                 unit: parseInt(selectedUnit.id),
                 user: selectedUser.user.email,
-                company: parseInt(companyId),
+                company: parseInt(companyId, 10),
                 is_owner: isOwner
             });
+
             console.log(response);
         } catch (error) {
             console.error(error);
@@ -86,8 +93,9 @@ const SendRegistrationButton = () => {
     }
     //TODO add a property name in the 
     useEffect(() => {
+
         if (properties) {
-            getUnitsFromProperties(properties);
+            getUnitsFromProperties(properties, companyId);
             getPublicUsers();
         }
     }, [showModal]);

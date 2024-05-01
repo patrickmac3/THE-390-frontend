@@ -18,7 +18,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts -r @cypress/instrument-cra start",
     "build": "react-scripts build",
     "test": "react-scripts test --watchAll=false",
     "coverage": "react-scripts test --watchAll=false --coverage",
@@ -48,15 +48,23 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.24.0",
+    "@babel/cli": "^7.24.1",
+    "@babel/core": "^7.24.4",
+    "@babel/preset-env": "^7.24.4",
     "@babel/preset-react": "^7.23.3",
+    "@cypress/code-coverage": "^3.12.37",
     "@cypress/instrument-cra": "^1.4.0",
     "axios-mock-adapter": "^1.22.0",
     "babel-jest": "^29.7.0",
-    "cypress": "^13.6.4",
+    "babel-plugin-istanbul": "^6.1.1",
+    "cypress": "^13.8.1",
     "cypress-file-upload": "^5.0.8",
     "istanbul": "^0.4.5",
     "jest": "^27.5.1",
-    "nyc": "^15.1.0"
+    "jest-localstorage-mock": "^2.4.26",
+    "jest-mock-axios": "^4.7.3",
+    "msw": "^2.2.13",
+    "nyc": "^15.1.0",
+    "react-test-renderer": "^18.2.0"
   }
 }

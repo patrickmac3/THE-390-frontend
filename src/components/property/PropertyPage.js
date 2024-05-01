@@ -37,13 +37,13 @@ const PropertyPage = () => {
     return property.condo_units.map((unit) => (
       //FIXME unique key prop error in the console
       <ListGroup variant="flush" key={unit.id} style={{ width: '250px', height: '150px', margin: '5px', fontSize: '13px' }} className=" h-25 shadow">
-        <ListGroup.Item style={{ marginBottom: "-10px" }}><img src={unit.image} style={{width: '220px', height: '180px'}}/></ListGroup.Item>
+        <ListGroup.Item style={{ marginBottom: "-10px" }}><img src={unit.image} style={{ width: '220px', height: '180px' }} /></ListGroup.Item>
         <ListGroup.Item style={{ marginBottom: "-10px" }}><strong>unit name place holder{/*{unit.name}*/}</strong></ListGroup.Item>
         <ListGroup.Item style={{ marginBottom: "-10px" }}>Location: {unit.location}</ListGroup.Item>
         <ListGroup.Item style={{ marginBottom: "-10px" }}>Purchase Price: ${unit.purchase_price}</ListGroup.Item>
         <ListGroup.Item style={{ marginBottom: "-10px" }}>Rental Price: ${unit.rent_price}</ListGroup.Item>
         <ListGroup.Item style={{ marginBottom: "-10px" }}>Size: {unit.size} sqft</ListGroup.Item>
-        <ListGroup.Item>Unit Fees: {parseFloat(300).toFixed(2)} $</ListGroup.Item>
+        <ListGroup.Item>Unit Fees: {unit.property_fee} $</ListGroup.Item>
       </ListGroup>
     ));
   };
@@ -55,7 +55,7 @@ const PropertyPage = () => {
     }
     return property.parking_units.map((spot) => (
       <ListGroup variant="flush" key={spot.id} style={{ width: '250px', height: '150px', margin: '5px', fontSize: '13px' }} className=" h-25 shadow">
-        <ListGroup.Item style={{ marginBottom: "-10px" }}><img src={spot.image} style={{width: '220px', height: '180px'}}/></ListGroup.Item>        
+        <ListGroup.Item style={{ marginBottom: "-10px" }}><img src={spot.image} style={{ width: '220px', height: '180px' }} /></ListGroup.Item>
         <ListGroup.Item style={{ marginBottom: "-10px" }}>Location: {spot.location}</ListGroup.Item>
         <ListGroup.Item style={{ marginBottom: "-10px" }}>Size: {spot.size} sqft</ListGroup.Item>
         <ListGroup.Item style={{ marginBottom: "-10px" }}>Purchase Price: ${spot.purchase_price}</ListGroup.Item>
@@ -72,7 +72,7 @@ const PropertyPage = () => {
     }
     return property.storage_units.map((locker) => (
       <ListGroup key={locker.id} style={{ width: '250px', height: '110px', margin: '5px', fontSize: '13px' }} className=" h-25 shadow">
-        <ListGroup.Item style={{ marginBottom: "-10px" }}><img src={locker.image} style={{width: '220px', height: '180px'}}/></ListGroup.Item>        
+        <ListGroup.Item style={{ marginBottom: "-10px" }}><img src={locker.image} style={{ width: '220px', height: '180px' }} /></ListGroup.Item>
         <ListGroup.Item style={{ marginBottom: "-10px" }}>Location: {locker.location}</ListGroup.Item>
         <ListGroup.Item style={{ marginBottom: "-10px" }}>Size: {locker.size} sqft</ListGroup.Item>
         <ListGroup.Item style={{ marginBottom: "-10px" }}>Purchase Price: ${locker.purchase_price}</ListGroup.Item>
@@ -89,7 +89,7 @@ const PropertyPage = () => {
     goBack()
   }
 
-  function handleGoToCommonFacilities(){
+  function handleGoToCommonFacilities() {
     navigate(`/property-page/${propertyId}/common-facilities`);
   }
 
@@ -122,16 +122,16 @@ const PropertyPage = () => {
             <Col>
               {/* FIXME there's no name in db yet */}
               {/* <h2>{property.name}</h2> */}
-              <h1>Property#{property.id}</h1>
+              <h1>The {property.name}</h1>
             </Col>
 
             <Col className="d-flex justify-content-end">
 
-              <Button variant="primary" onClick={handleGoToCommonFacilities} style = {{ marginRight: "40px"}} data-testid="to-common-facilities" >
+              <Button variant="primary" onClick={handleGoToCommonFacilities} style={{ marginRight: "40px" }} data-testid="to-common-facilities" >
                 CommonFacilities
               </Button>
 
-              <Button variant="primary" onClick={handleShow} style = {{ marginRight: "40px"}}>
+              <Button variant="primary" onClick={handleShow} style={{ marginRight: "40px" }}>
                 Upload Files
               </Button>
 
@@ -140,7 +140,7 @@ const PropertyPage = () => {
                   <Modal.Title>Upload Files</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  <Form.Group controlId="formFileMultiple" className="mb-3" style = {{ marginRight: "50px"}}>
+                  <Form.Group controlId="formFileMultiple" className="mb-3" style={{ marginRight: "50px" }}>
                     <Form.Label>Add your documents here.</Form.Label>
                     <Form.Control type="file" multiple />
                   </Form.Group>

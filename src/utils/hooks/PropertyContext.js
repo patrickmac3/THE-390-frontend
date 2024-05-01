@@ -21,9 +21,11 @@ export const PropertyProvider = ({ children }) => {
         condo_units: [],
         parking_units: [],
         storage_units: [],
-        image: ""
+        image: "",
+        name: ""
     }
     );
+    const [companyFinances, setCompanyFinances] = useState({});
 
     // clear all property states on logout to avoid showing the previous user's data
     const clearAllPropertyStatesOnLogout = () => [
@@ -56,6 +58,33 @@ export const PropertyProvider = ({ children }) => {
                 console.error("Error fetching property profile:", error.message);
             });
     };
+
+    const fetchCompanyFinance = async (company_id) => {
+        try {
+            const parsedCompanyId = parseInt(company_id, 10);
+            const response = await axiosInstance.get(`profiles/company-profile/${parsedCompanyId}/finance-report/`);
+            console.log("Fetching finances for company id:", parsedCompanyId); // Log the confirmation to the console
+            setCompanyFinances(response.data); // Use the state setter to store the response data
+        } catch (error) {
+            console.error("Error fetching property profile:", error.message); // Log any errors that occur
+        }
+    };
+
+    const updateCompanyFinance = async (company_id, updatedFinance) => {
+        try {
+            const parsedCompanyId = parseInt(company_id, 10); // Ensure the company ID is an integer
+            // Await the async call to complete and catch any errors that occur
+            const response = await axiosInstance.put(`profiles/company-profile/${parsedCompanyId}/finance-report/`, updatedFinance);
+
+            // Log or handle the successful response, if necessary
+            console.log("Finance updated successfully for company id:", parsedCompanyId);
+            console.log(response.data); // Log the response data to see what was returned (optional)
+        } catch (error) {
+            // Log the error with a more appropriate error message
+            console.error("Error updating company finance profile:", error.message);
+        }
+    };
+
 
     // call to get all the condo units present for a specific user profile
     // to be used when seeing condo units on the user dashboard
@@ -110,7 +139,8 @@ export const PropertyProvider = ({ children }) => {
                     condo_units: response.data.condo_units,
                     parking_units: response.data.parking_units,
                     storage_units: response.data.storage_units,
-                    image: response.data.image
+                    image: response.data.image,
+                    name: response.data.name
                 });
                 console.log(response.data);
             })
@@ -148,7 +178,9 @@ export const PropertyProvider = ({ children }) => {
         fetchAllParkingUnitsForProfile,
         StorageUnits,
         fetchAllStorageUnitsForProfile,
-        clearAllPropertyStatesOnLogout
+        clearAllPropertyStatesOnLogout,
+        companyFinances,
+        fetchCompanyFinance
     }
 
     return (

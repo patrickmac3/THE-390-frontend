@@ -40,7 +40,7 @@ const NavigationBar = () => {
             </Nav>
             <Nav className="ms-auto justify-content-end" variant="tabs" activeKey={getActiveKey()}>
               {isLoggedIn && role === "COMPANY" ?
-                <Nav.Item evenKey="/operation">
+                <Nav.Item eventkey="/operation">
                   <LinkContainer to="/operation">
                     <Nav.Link>
                       <i className="fas fa-user"></i> Operation

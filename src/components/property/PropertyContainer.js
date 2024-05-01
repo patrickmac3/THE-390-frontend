@@ -58,23 +58,24 @@ const PropertyContainer = () => {
                         <PropertyCard key={condoUnit.id} property={condoUnit} type={"Condo"} />
                     ))
             }
-            { //TODO insure that the storage and parking units are being fetched when the models can support them
-                //TODO test the storage and parking units to make sure they are being fetched
-                /* {
-                    role === "PUBLIC" && parkingUnits && Object.values(parkingUnits).length === 0
-                        ? <h1>No Parking Units Found</h1>
-                        : Object.values(parkingUnits).map((parkingUnit) => (
-                            <PropertyCard key={parkingUnit.id} property={parkingUnit} type ={"Parking"}/>
-                        ))
-                }
-                {
-                    role === "PUBLIC" && storageUnits && Object.values(storageUnits).length === 0
-                        ? <h1>No Storage Units Found</h1>
-                        : Object.values(storageUnits).map((storageUnit) => (
-                            <PropertyCard key={storageUnit.id} property={storageUnit} type ={"Storage"}/>
-                        ))
-                } */
+            {
+                role === "PUBLIC" && parkingUnits !== null && parkingUnits !== undefined && Object.values(parkingUnits).length === 0
+                    ? <h1>No Parking Units Found</h1>
+                    : parkingUnits ?
+                        Object.values(parkingUnits).map((parkingUnit) => (
+                            <PropertyCard key={parkingUnit.id} property={parkingUnit} type={"Parking"} />
+                        )) : null
             }
+            {
+                role === "PUBLIC" && storageUnits !== null && storageUnits !== undefined && Object.values(storageUnits).length === 0
+                    ? <h1>No Storage Units Found</h1>
+                    : storageUnits
+                        ? Object.values(storageUnits).map((storageUnit) => (
+                            <PropertyCard key={storageUnit.id} property={storageUnit} type={"Storage"} />
+                        ))
+                        : null
+            }
+
         </div>
     );
 };

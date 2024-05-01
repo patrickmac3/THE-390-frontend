@@ -40,7 +40,7 @@ const Financial = () => {
                   {/* Displaying property name and total */}
                   <Row style={{ width: '100%' }}>
                     <Col>
-                      {`Financial Info ${property.properties[propertyKey].property_name}`}
+                      {`${property.properties[propertyKey].property_name}`}
                     </Col>
                     <Col style={{ textAlign: "right" }}>
                       ${property.properties[propertyKey].fee}

@@ -1,3 +1,5 @@
+
+
 const { Link } = require("react-router-dom")
 
 /* In this file, we are testing the following:
@@ -79,6 +81,3 @@ describe('Logout', () => {
     cy.url().should('include', '/login');
   });
 })
-
-
-

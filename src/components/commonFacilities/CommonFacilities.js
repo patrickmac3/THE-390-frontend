@@ -26,6 +26,9 @@ const CommonFacilities = () => {
           fetchPropertyById(propertyId);
         }
       }, []);
+    function handleGoToCreateCommonFacilities(){
+      navigate(`/property-page/${propertyId}/create-common-facilities`);
+    }
     return (
         <Container className="mt-5">
           <Row className="justify-content-center">
@@ -60,15 +63,29 @@ const CommonFacilities = () => {
                 </ListGroup>
               </Card>
             </Col>
-            <Col md={8}>
+            <Col style={{ padding: '20px', overflowY: 'auto' }}>
+              <Row>
+                <Col>
+                  <h2>List of Common Facilities</h2>
+                </Col>
+                <Col>
+                  <div className="d-flex justify-content-end">
+                    <Button variant="primary" onClick={handleGoToCreateCommonFacilities} data-testid="to-create-common-facilities" >
+                    Create Common Facilities
+                    </Button>
+                  </div>
+                </Col>
+              </Row>
               <Row>
                 <Card className="mb-3">
                     <Card.Header>
-                    <h1>Common Facility #1</h1>
+                    <h1>Concordia Gym</h1>
                     </Card.Header>
                     <Card.Body>
                     <Col>
-                        <p>more details to come...</p>
+                        <Row>Description: The Concordia Gym</Row>
+                        <Row>Capacity: 50</Row>
+                        <Row>Reservation duration: 6 hours</Row>
                     </Col>
                     </Card.Body>
                 </Card>
@@ -76,11 +93,13 @@ const CommonFacilities = () => {
               <Row>
               <Card className="mb-3">
                     <Card.Header>
-                    <h1>Common Facility #2</h1>
+                    <h1>Hall Lounge</h1>
                     </Card.Header>
                     <Card.Body>
                     <Col>
-                        <p>more details to come...</p>
+                        <Row>Description: The Hall Lounge</Row>
+                        <Row>Capacity: 20</Row>
+                        <Row>Reservation duration: 3 hours</Row>
                     </Col>
                     </Card.Body>
                 </Card>

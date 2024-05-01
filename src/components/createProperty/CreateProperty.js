@@ -130,13 +130,13 @@ const CreateProperty = () => {
       axiosInstance
         .postForm(`/properties/property-profile/`, {
           //TODO await model updates with name and image
-          // name: formData.property_name, 
+          name: formData.property_name,
           company: companyID,
           address: formData.property_address,
           city: formData.property_city,
           province: formData.property_province,
           postal_code: formData.property_postal_code,
-          fee_rate: 0.12, // TODO Implement input for fee rate. This is a temp value
+          fee_rate: formData.property_fee_rate,
           image: formData.property_image, //TODO: await model updates with name and image
         })
         .then((res) => {
