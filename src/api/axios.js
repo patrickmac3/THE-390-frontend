@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // const baseURL = 'http://localhost:8000/';
-const baseURL = 'https://the-390.onrender.com';
+const baseURL = 'https://the-390.onrender.com/';
 //TODO: change base url to render link 
 const axiosInstance = axios.create({
 	baseURL: baseURL,
