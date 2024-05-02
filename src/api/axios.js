@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'https://the-390.onrender.com/'
+const baseURL = 'https://the-390.onrender.com/';
 
 const axiosInstance = axios.create({
   baseURL: baseURL,
