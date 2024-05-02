@@ -1,49 +1,114 @@
+# Getting Started with Create React App
 
-> frontend@0.1.0 coverage
-> react-scripts test --watchAll=false --coverage
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
---------------------------------|---------|----------|---------|---------|-------------------
-File                            | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
---------------------------------|---------|----------|---------|---------|-------------------
-All files                       |    1.23 |        0 |    3.89 |    1.25 |                   
- src                            |       0 |      100 |       0 |       0 |                   
-  App.js                        |       0 |      100 |       0 |       0 | 25-30             
-  index.js                      |       0 |      100 |     100 |       0 | 10-12             
- src/api                        |       0 |        0 |       0 |       0 |                   
-  axios.js                      |       0 |        0 |       0 |       0 | 3-83              
- src/components                 |   57.14 |      100 |   66.66 |   57.14 |                   
-  Content.js                    |     100 |      100 |     100 |     100 |                   
-  Footer.js                     |     100 |      100 |     100 |     100 |                   
-  Header.js                     |       0 |      100 |       0 |       0 | 12-14             
- src/components/createProperty  |       0 |        0 |       0 |       0 |                   
-  CreateLocker.js               |       0 |        0 |       0 |       0 | 13-185            
-  CreateParking.js              |       0 |        0 |       0 |       0 | 13-188            
-  CreateProperty.js             |       0 |        0 |       0 |       0 | 13-149            
-  CreateUnit.js                 |       0 |        0 |       0 |       0 | 13-189            
- src/components/dashboard       |   26.66 |        0 |   33.33 |   26.66 |                   
-  DashBoard.js                  |       0 |        0 |       0 |       0 | 13-30             
-  Financial.js                  |     100 |      100 |     100 |     100 |                   
-  SubmittedRequests.js          |     100 |      100 |     100 |     100 |                   
-  UserInfo.js                   |       0 |      100 |       0 |       0 | 15-26             
- src/components/log             |       0 |        0 |       0 |       0 |                   
-  LogOut.js                     |       0 |      100 |       0 |       0 | 9-30              
-  Login.js                      |       0 |        0 |       0 |       0 | 10-112            
-  SignUp.js                     |       0 |        0 |       0 |       0 | 7-207             
-  SignUpCompany.js              |       0 |        0 |       0 |       0 | 7-206             
- src/components/nagivationBar   |       0 |        0 |       0 |       0 |                   
-  NavigationBar.js              |       0 |        0 |       0 |       0 | 7-23              
- src/components/property        |       0 |        0 |       0 |       0 |                   
-  PropertyCard.js               |       0 |        0 |       0 |       0 | 8-93              
-  PropertyContainer.js          |       0 |        0 |       0 |       0 | 9-58              
-  PropertyPage.js               |       0 |        0 |       0 |       0 | 10-95             
- src/components/userProfile     |       0 |        0 |       0 |       0 |                   
-  UserProfile.js                |       0 |        0 |       0 |       0 | 15-92             
- src/screens                    |     100 |      100 |     100 |     100 |                   
-  HomeScreen.js                 |     100 |      100 |     100 |     100 |                   
- src/screens/homeScreenCarousel |     100 |      100 |     100 |     100 |                   
-  CarouselHomeScreen.js         |     100 |      100 |     100 |     100 |                   
- src/utils/hooks                |       0 |        0 |       0 |       0 |                   
-  AuthContext.js                |       0 |        0 |       0 |       0 | 4-39              
+## Running the App Locally
+
+## Prerequisites
+
+### Installing Node.js and npm
+
+1. Download Node.js
+    - Visit the Node.js website.
+    - Choose the version for your operating system (Windows, macOS, Linux).
+    - Download the installer.
+2. Install Node.js and npm
+    - Run the downloaded installer.
+    - Follow the installation prompts.
+    - Ensure 'npm package manager' is included in the installation.
+3. Verify Installation
+    - Open your terminal or command prompt.
+    - Run `node -v` to check the Node.js version.
+    - Run `npm -v` to verify npm installation.
+
+## Setup
+
+1. Clone the Repository
+    - `git clone [repository-url]`
+    - `cd [repository-name]`
+2. Open the app directory
+    - `cd frontend`
+4. Install Dependencies
+    - `npm install`
+5.  Start the App
+    - `npm start`
+    - Access at http://localhost:3000
+
+## Notes
+
+- The app automatically reloads if you make any code changes.
+- For troubleshooting, consult the React Documentation.
+
+This guide assumes basic familiarity with using command-line interfaces. If you encounter any problems during installation, refer to the respective Node.js or npm documentation for detailed guidelines.
+
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   
   ProfileContext.js             |       0 |        0 |       0 |       0 | 5-108             
   PropertyContext.js            |       0 |      100 |       0 |       0 | 4-154             
 --------------------------------|---------|----------|---------|---------|-------------------

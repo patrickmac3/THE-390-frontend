@@ -83,3 +83,21 @@ Cypress.Commands.add('createStorageUnit', () => {
   cy.get('[data-testid="submit-button"]').click()
   cy.url().should('include', '/property-page')
 });
+
+Cypress.Commands.add('goToOperationalCostFromHomePage', () => {
+  cy.contains('Dashboard').click();
+  cy.contains('Operation').click();
+  cy.url().should('include', '/operation');
+  cy.contains('Operation Cost');
+  cy.contains('Property Fees: $');
+  cy.contains('Property Expenses: $');
+  cy.contains('Taj Mahal');
+  cy.contains('Type');
+  cy.contains('Unit Number');
+  cy.contains('Current Fee');
+  cy.contains('Total Expenses');
+  cy.contains('Enter New Expense');
+  cy.contains('Save');
+  cy.contains('Add');
+  cy.contains('Delete');
+});

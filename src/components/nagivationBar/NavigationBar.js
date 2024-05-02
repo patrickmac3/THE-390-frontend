@@ -1,80 +1,96 @@
 import React from 'react'
-import { useAuth } from "../../utils/hooks/AuthContext";
-import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
-import { useLocation } from "react-router-dom";
-import { useProfile } from '../../utils/hooks/ProfileContext';
+import { useAuth } from '../../utils/hooks/AuthContext'
+import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
+import { useLocation } from 'react-router-dom'
+import { useProfile } from '../../utils/hooks/ProfileContext'
 
 const NavigationBar = () => {
-  const { isLoggedIn } = useAuth();
-  const location = useLocation();  // Using useLocation to access the current path
-  const { role } = useProfile();
+  const { isLoggedIn } = useAuth()
+  const location = useLocation() // Using useLocation to access the current path
+  const { role } = useProfile()
 
   const getActiveKey = () => {
     // This function determines the active key based on the current pathname
-    const path = location.pathname;
+    const path = location.pathname
     if (path.includes('/profile')) {
-      return 'profile';
+      return 'profile'
     } else if (path.includes('/dashboard')) {
-      return 'dashboard';
+      return 'dashboard'
     } else if (path.includes('/logout')) {
-      return 'logout';
+      return 'logout'
     }
-    return '/';
-  };
+    return '/'
+  }
   return (
     <header>
-      <Navbar expand="sm" className="bg-body-tertiary">
+      <Navbar expand='sm' className='bg-body-tertiary'>
         <Container>
-          <LinkContainer to="/">
+          <LinkContainer to='/'>
             <Navbar.Brand>CondoCare</Navbar.Brand>
           </LinkContainer>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              {isLoggedIn ? "" : <LinkContainer to="/login">
-                <Nav.Link>
-                  <i className="fas fa-user"></i> LOGIN
-                </Nav.Link>
-              </LinkContainer>}
+          <Navbar.Toggle aria-controls='basic-navbar-nav' />
+          <Navbar.Collapse id='basic-navbar-nav'>
+            <Nav className='me-auto'>
+              {isLoggedIn ? (
+                ''
+              ) : (
+                <LinkContainer to='/login'>
+                  <Nav.Link>
+                    <i className='fas fa-user'></i> LOGIN
+                  </Nav.Link>
+                </LinkContainer>
+              )}
             </Nav>
-            <Nav className="ms-auto justify-content-end" variant="tabs" activeKey={getActiveKey()}>
-              {isLoggedIn && role === "COMPANY" ?
-                <Nav.Item eventkey="/operation">
-                  <LinkContainer to="/operation">
+            <Nav
+              className='ms-auto justify-content-end'
+              variant='tabs'
+              activeKey={getActiveKey()}
+            >
+              {isLoggedIn && role === 'COMPANY' ? (
+                <Nav.Item eventkey='/operation'>
+                  <LinkContainer to='/operation'>
                     <Nav.Link>
-                      <i className="fas fa-user"></i> Operation
+                      <i className='fas fa-user'></i> Operation
                     </Nav.Link>
                   </LinkContainer>
                 </Nav.Item>
-                : ''}
-              {isLoggedIn ?
-                <Nav.Item eventkey="/profile">
-                  <LinkContainer to="/profile">
+              ) : (
+                ''
+              )}
+              {isLoggedIn ? (
+                <Nav.Item eventkey='/profile'>
+                  <LinkContainer to='/profile'>
                     <Nav.Link>
-                      <i className="fas fa-user"></i> Profile
+                      <i className='fas fa-user'></i> Profile
                     </Nav.Link>
                   </LinkContainer>
                 </Nav.Item>
-                : ''}
-              {isLoggedIn ?
-                <Nav.Item eventkey="/dashboard">
-                  <LinkContainer to="/dashboard">
+              ) : (
+                ''
+              )}
+              {isLoggedIn ? (
+                <Nav.Item eventkey='/dashboard'>
+                  <LinkContainer to='/dashboard'>
                     <Nav.Link>
-                      <i className="fas fa-user"></i> Dashboard
+                      <i className='fas fa-user'></i> Dashboard
                     </Nav.Link>
                   </LinkContainer>
                 </Nav.Item>
-                : ''}
-              {isLoggedIn ?
-                <Nav.Item eventkey="/logout">
-                  <LinkContainer to="/logout" data-testid="logout">
+              ) : (
+                ''
+              )}
+              {isLoggedIn ? (
+                <Nav.Item eventkey='/logout'>
+                  <LinkContainer to='/logout' data-testid='logout'>
                     <Nav.Link>
-                      <i className="fas fa-user"></i> LOGOUT
+                      <i className='fas fa-user'></i> LOGOUT
                     </Nav.Link>
                   </LinkContainer>
                 </Nav.Item>
-                : ''}
+              ) : (
+                ''
+              )}
               {/* {isLoggedIn ?
                 <NavDropdown data-testid="dropdown" title="Dropdown" id="basic-nav-dropdown">
                   <LinkContainer to="/profile"><NavDropdown.Item>Profile</NavDropdown.Item></LinkContainer>
@@ -87,7 +103,8 @@ const NavigationBar = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-    </header>)
+    </header>
+  )
 }
 
 export default NavigationBar

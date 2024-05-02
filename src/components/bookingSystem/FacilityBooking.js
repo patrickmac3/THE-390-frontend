@@ -1,84 +1,242 @@
-import React, { useState } from 'react'
-import { useParams } from 'react-router-dom';
-import LargeTitle from "../LargeTitle.js";
-import { Button,Row, Col, Modal } from 'react-bootstrap';
-import Calendar from './Calendar.js';
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import LargeTitle from '../LargeTitle.js'
+import { Button, Row, Col, Modal } from 'react-bootstrap'
+import Calendar from './Calendar.js'
+import { useProperty } from '../../utils/hooks/PropertyContext'
+import { Dropdown } from 'react-bootstrap'
+import axiosInstance from '../../api/axios'
+import ReservationsTable from './ReservationTable.js'
 
 const FacilityBooking = () => {
+  const { propertyId } = useParams()
+  const { fetchAllFacilities, facilities } = useProperty()
+  const [unitFacilities, setUnitFacilities] = useState([])
+  const {
+    fetchAllCondoUnitsForProfile,
+    condoUnits,
+    fetchAllStorageUnitsForProfile,
+    fetchAllParkingUnitsForProfile,
+  } = useProperty()
+  const navigate = useNavigate()
+  const [selectedFactility, setSelectedFacility] = useState('Select a Facility')
 
-    // propertyId is used to fetch the facility booking details for that specific property
-    let {propertyId} = useParams(); 
+  const [showStartTimeModal, setShowStartTimeModal] = useState(false)
+  const [showEndTimeModal, setShowEndTimeModal] = useState(false)
+  const [startTime, setStartTime] = useState(null)
+  const [endTime, setEndTime] = useState(null)
+  const [matchedUnit, setMatchedUnit] = useState(null)
+  const [reservations, setReservations] = useState([])
 
-    const [chosenTime, setChosenTime] = useState(null);
-    const [showConfirmation, setShowConfirmation] = useState(false);
+  const handleOpenStartTimeModal = () => setShowStartTimeModal(true)
+  const handleCloseStartTimeModal = () => setShowStartTimeModal(false)
 
-    const handleTimeSelected = (time) => {
-        setChosenTime(time);
-    };
+  const handleOpenEndTimeModal = () => setShowEndTimeModal(true)
+  const handleCloseEndTimeModal = () => setShowEndTimeModal(false)
 
-    const handleConfirmModalClose = () => {
-        setShowConfirmation(false);
-    };
+  let filteredFacilities = []
+  useEffect(() => {
+    const userId = localStorage.getItem('ID')
+    const fetchData = async () => {
+      await fetchAllFacilities() // fetch all facilities for all properties
+      await fetchAllCondoUnitsForProfile(userId)
+      await fetchAllStorageUnitsForProfile(userId)
+      await fetchAllParkingUnitsForProfile(userId)
+    }
+    fetchData().then(() => {
+      // Ensure data fetching is complete before running the filter
+      // This assumes that these states are properly updated by the above fetch calls
 
-    const handleConfirm = () => {
-        setShowConfirmation(true);
-       
-    };
-    
+      const propertyIds = new Set()
+      let propertyIdforUnit // Use let for variables that need to be reassigned
+      if (condoUnits) {
+        // Find the first unit that matches the propertyId and get its ID
+        setMatchedUnit(condoUnits.find(unit => unit.id === Number(propertyId)))
+        if (matchedUnit) {
+          propertyIdforUnit = matchedUnit.property // Now storing the ID correctly
+          console.log('property id for unit is: ', propertyIdforUnit)
 
-    return (
-       <Row className='justify-content-center'>
+          // Assuming you want to gather all properties that match this propertyId
+          condoUnits.forEach(unit => {
+            if (unit.property === propertyIdforUnit) {
+              // This seems redundant or incorrect based on the previous description
+              propertyIds.add(unit.property)
+            }
+          })
+          console.log('property ids are: ', propertyIds)
+        } else {
+          console.log('No matching unit found for propertyId.')
+        }
+      }
+      // Filter facilities that have a property matching any of the propertyIds in the Set
+      filteredFacilities = facilities.filter(facility =>
+        propertyIds.has(facility.property),
+      )
+      setUnitFacilities(filteredFacilities)
+      console.log('Filtered Facilities: ', filteredFacilities)
+    })
 
-        <LargeTitle title='Facility Booking' />
-            <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
-                <h2>Condo number {propertyId}</h2>
-            </div>
+    try {
+      axiosInstance.get('reservations/reservations/').then(res => {
+        setReservations(res.data)
+      })
+    } catch (error) {
+      console.log('Error fetching reservations:', error)
+    }
+  }, [])
 
-            {/* This section will display the available facilities that can be booked  */}
-        <Row style = {{marginTop:'20px'}}>
-            <Col md={2}>
-                <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
-                    <p style={{fontWeight:'bold'}}>Choose a facility: </p>
-                </div>
-                <Button variant='primary' size='lg' active style={{width:'100%', marginBottom:'10px'}}>
-                    Common Facility #1
-                </Button>
-                <Button variant='primary' size='lg' active style={{width:'100%', marginBottom:'10px'}}>
-                    Common Facility #2
-                </Button>
+  //make a post request to create a booking
+  const handleCreateBooking = async () => {
+    try {
+      // Post request to create a booking
+      const response = await axiosInstance.post('reservations/reservations/', {
+        facility: selectedFactility.id,
+        user: localStorage.getItem('ID'),
+        start_time: startTime,
+        end_time: endTime,
+      })
+
+      // Assuming the response includes the reservation data, otherwise adjust as necessary
+      if (response.data) {
+        window.alert(
+          `Reservation made successfully!\n\nFacility: ${selectedFactility.name}\nStart Time: ${startTime}\nEnd Time: ${endTime}`,
+        )
+      } else {
+        window.alert(
+          'Reservation made successfully but no details were returned.',
+        )
+      }
+    } catch (error) {
+      console.log('Error creating booking:', error)
+      window.alert('Failed to create reservation. Please try again.')
+    }
+  }
+
+  const handleConfirm = () => {
+    handleCreateBooking()
+    setStartTime(null)
+    setEndTime(null)
+    setSelectedFacility('Select a Facility')
+  }
+
+  const goBack = () => {
+    navigate(-1)
+  }
+
+  return (
+    <div className='container mt-5'>
+      <LargeTitle
+        title={`Reservation for Unit ${matchedUnit && matchedUnit.location}`}
+      />
+
+      <Row>
+        <Col>
+          <Dropdown
+            className='mb-4 text-center mx-auto'
+            style={{ width: '200px', marginTop: '100px' }}
+          >
+            <Dropdown.Toggle
+              variant='success'
+              id='dropdown-Unit'
+              style={{ width: '200px' }}
+            >
+              {selectedFactility === 'Select a Facility'
+                ? 'Select a Facility'
+                : `${selectedFactility.name}`}
+            </Dropdown.Toggle>
+            <Dropdown.Menu className='text-center' style={{ width: '200px' }}>
+              {unitFacilities.map(facility => (
+                <Dropdown.Item
+                  key={facility.id}
+                  eventKey={facility.id}
+                  onClick={() => setSelectedFacility(facility)}
+                >
+                  Facility {facility.name}
+                </Dropdown.Item>
+              ))}
+            </Dropdown.Menu>
+          </Dropdown>
+
+          <Row>
+            <Col style={{ justifyContent: 'center' }}>
+              <Button
+                onClick={handleOpenStartTimeModal}
+                style={{ width: '100px' }}
+              >
+                Start Time
+              </Button>
             </Col>
-
-
-            {/* Fix "Confirm" button, it's currently disabled */}
-            <Col md={10}>
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-                    <p style={{ fontWeight: 'bold', marginBottom: '10px' }}>Pick a date and time:</p>
-                    <Row style={{ marginBottom: '20px' }}>
-                        <Calendar onTimeSelected={handleTimeSelected} />
-                    </Row>
-                    <Row>
-                        <Button variant='primary' size='lg' active style={{ width: '100%', marginBottom: '10px' }} onClick={handleConfirm} disabled={!chosenTime}>
-                            Confirm choice
-                        </Button>
-                    </Row>
-                </div>
-                <Modal show={showConfirmation} onHide={() => setShowConfirmation(false)}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Reservation Confirmed</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>Your choice has been reserved.</Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={() => setShowConfirmation(false)}>Close</Button>
-                    </Modal.Footer>
-                </Modal>
+            <Col>
+              <span
+                className='badge bg-success'
+                style={{ fontSize: '18px', width: '220px' }}
+              >
+                {startTime && `${startTime}`}
+              </span>
             </Col>
+          </Row>
 
-        </Row>
-    </Row>
-            
+          <Row>
+            <Col>
+              <Button
+                onClick={handleOpenEndTimeModal}
+                style={{
+                  width: '100px',
+                  marginTop: '20px',
+                  marginBottom: '20px',
+                }}
+              >
+                End Time
+              </Button>
+            </Col>
+            <Col>
+              <span
+                className='badge bg-success'
+                style={{ fontSize: '18px', width: '220px', marginTop: '20px' }}
+              >
+                {endTime && `${endTime}`}
+              </span>
+            </Col>
+          </Row>
 
-       
-    );
-};
+          {showStartTimeModal && (
+            <Calendar
+              setTime={setStartTime}
+              timeType='Start'
+              handleClose={handleCloseStartTimeModal}
+            />
+          )}
+          {showEndTimeModal && (
+            <Calendar
+              setTime={setEndTime}
+              timeType='End'
+              handleClose={handleCloseEndTimeModal}
+            />
+          )}
 
-export default FacilityBooking;
+          <Row>
+            <Col md={8}>
+              <Button
+                variant='primary'
+                onClick={handleConfirm}
+                disabled={!startTime || !endTime}
+                style={{ width: '100px' }}
+              >
+                Confirm
+              </Button>
+              <Button variant='secondary' onClick={goBack}>
+                Cancel
+              </Button>
+            </Col>
+          </Row>
+        </Col>
+        <Col>
+          {/* table for the reservations */}
+          <ReservationsTable reservations={reservations} unit={matchedUnit} />
+        </Col>
+      </Row>
+    </div>
+  )
+}
+
+export default FacilityBooking

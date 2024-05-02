@@ -4,14 +4,14 @@ import SignUp from './log/SignUp.js'
 import Login from './log/Login.js'
 
 const Content = () => {
-    return (
-        <main>
-            <Container>
-                <Login />
-                <SignUp />
-            </Container>
-        </main>
-    )
+  return (
+    <main>
+      <Container>
+        <Login />
+        <SignUp />
+      </Container>
+    </main>
+  )
 }
 
 export default Content
