@@ -1,0 +1,115 @@
+{
+    "properties": {
+        "12": {
+            "property_name": "Taj Mahal",
+            "condos": [
+                {
+                    "id": 24,
+                    "condo": "106",
+                    "expense": 805.0,
+                    "fee": 360.0
+                },
+                {
+                    "id": 25,
+                    "condo": "108",
+                    "expense": 13.0,
+                    "fee": 360.0
+                },
+                {
+                    "id": 28,
+                    "condo": "555",
+                    "expense": 9.0,
+                    "fee": 360.0
+                },
+                {
+                    "id": 32,
+                    "condo": "198",
+                    "expense": 0.0,
+                    "fee": 360.0
+                }
+            ],
+            "parkings": [
+                {
+                    "id": 13,
+                    "parking": "S102",
+                    "expense": 58.0,
+                    "fee": 36.0
+                }
+            ],
+            "storages": [],
+            "condo_fee": 1440.0,
+            "parking_fee": 36.0,
+            "storage_fee": 0,
+            "condo_expense": 827.0,
+            "parking_expense": 58.0,
+            "storage_expense": 0,
+            "fee": 1476.0,
+            "expenses": 885.0
+        },
+        "13": {
+            "property_name": "Burj Kalifa",
+            "condos": [
+                {
+                    "id": 31,
+                    "condo": "302",
+                    "expense": 10.0,
+                    "fee": 360.0
+                }
+            ],
+            "parkings": [],
+            "storages": [],
+            "condo_fee": 360.0,
+            "parking_fee": 0,
+            "storage_fee": 0,
+            "condo_expense": 10.0,
+            "parking_expense": 0,
+            "storage_expense": 0,
+            "fee": 360.0,
+            "expenses": 10.0
+        },
+        "14": {
+            "property_name": "Buckingham Palace",
+            "condos": [
+                {
+                    "id": 1,
+                    "condo": "576",
+                    "expense": 15.0,
+                    "fee": 1500.0
+                },
+                {
+                    "id": 30,
+                    "condo": "576",
+                    "expense": 1.0,
+                    "fee": 1500.0
+                }
+            ],
+            "parkings": [],
+            "storages": [],
+            "condo_fee": 3000.0,
+            "parking_fee": 0,
+            "storage_fee": 0,
+            "condo_expense": 16.0,
+            "parking_expense": 0,
+            "storage_expense": 0,
+            "fee": 3000.0,
+            "expenses": 16.0
+        },
+        "15": {
+            "property_name": "Concordia University",
+            "condos": [],
+            "parkings": [],
+            "storages": [],
+            "condo_fee": 0,
+            "parking_fee": 0,
+            "storage_fee": 0,
+            "condo_expense": 0,
+            "parking_expense": 0,
+            "storage_expense": 0,
+            "fee": 0,
+            "expenses": 0
+        }
+    },
+    "expenses": 911.0,
+    "fee": 4836.0,
+    "total": 3925.0
+}

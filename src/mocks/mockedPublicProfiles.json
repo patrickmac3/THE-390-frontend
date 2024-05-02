@@ -1,0 +1,157 @@
+{"profiles":[
+    {
+        "user": {
+            "id": 4,
+            "email": "public1@gmail.com",
+            "role": "PUBLIC",
+            "first_name": "Public",
+            "last_name": "User"
+        },
+        "address": "78 Guy Street",
+        "city": "Montreal",
+        "province": "",
+        "postal_code": "H4x!t5",
+        "phone_number": "514.123.4567",
+        "avatar": "https://soen390-team18-s3.s3.amazonaws.com/avatar_images/pp.jpg?AWSAccessKeyId=AKIAUSU5ZBEMQ2AMDONI&Signature=mP5JxyzMktkZu6ZLqD4VsDJbQkY%3D&Expires=1712992241",
+        "type": "OWNER",
+        "condo_units": []
+    },
+    {
+        "user": {
+            "id": 5,
+            "email": "test@example.com",
+            "role": "PUBLIC",
+            "first_name": "John",
+            "last_name": "Doe"
+        },
+        "address": "",
+        "city": "",
+        "province": "",
+        "postal_code": "",
+        "phone_number": "",
+        "avatar": "https://soen390-team18-s3.s3.amazonaws.com/avatar_images/testpfp.jpg?AWSAccessKeyId=AKIAUSU5ZBEMQ2AMDONI&Signature=E4WY6sijV6vr2YYXTFHttbVnU1E%3D&Expires=1712992241",
+        "type": "OWNER",
+        "condo_units": [
+            {
+                "id": 5,
+                "public_profile": 5,
+                "location": "101",
+                "purchase_price": "1500000.00",
+                "rent_price": "1000.00",
+                "property_fee": 934.0,
+                "operational_expense": "0.00",
+                "size": "934.00",
+                "extra_information": null,
+                "image": "https://soen390-team18-s3.s3.amazonaws.com/condoUnit_images/defaultCondoUnit.jpg?AWSAccessKeyId=AKIAUSU5ZBEMQ2AMDONI&Signature=N%2BRqycsEApBMnh%2BuY5VsHc1CysI%3D&Expires=1712992241",
+                "property": 1
+            },
+            {
+                "id": 6,
+                "public_profile": 5,
+                "location": "105",
+                "purchase_price": "100000.00",
+                "rent_price": "1200.00",
+                "property_fee": 1500.0,
+                "operational_expense": "0.00",
+                "size": "1500.00",
+                "extra_information": null,
+                "image": "https://soen390-team18-s3.s3.amazonaws.com/condoUnit_images/defaultCondoUnit.jpg?AWSAccessKeyId=AKIAUSU5ZBEMQ2AMDONI&Signature=N%2BRqycsEApBMnh%2BuY5VsHc1CysI%3D&Expires=1712992241",
+                "property": 3
+            },
+            {
+                "id": 7,
+                "public_profile": 5,
+                "location": "106",
+                "purchase_price": "100000.00",
+                "rent_price": "1600.00",
+                "property_fee": 1700.0,
+                "operational_expense": "0.00",
+                "size": "1700.00",
+                "extra_information": null,
+                "image": "https://soen390-team18-s3.s3.amazonaws.com/condoUnit_images/defaultCondoUnit.jpg?AWSAccessKeyId=AKIAUSU5ZBEMQ2AMDONI&Signature=N%2BRqycsEApBMnh%2BuY5VsHc1CysI%3D&Expires=1712992241",
+                "property": 3
+            },
+            {
+                "id": 8,
+                "public_profile": 5,
+                "location": "108",
+                "purchase_price": "100000.00",
+                "rent_price": "1600.00",
+                "property_fee": 1600.0,
+                "operational_expense": "0.00",
+                "size": "1600.00",
+                "extra_information": null,
+                "image": "https://soen390-team18-s3.s3.amazonaws.com/condoUnit_images/defaultCondoUnit.jpg?AWSAccessKeyId=AKIAUSU5ZBEMQ2AMDONI&Signature=N%2BRqycsEApBMnh%2BuY5VsHc1CysI%3D&Expires=1712992241",
+                "property": 3
+            }
+        ]
+    },
+    {
+        "user": {
+            "id": 6,
+            "email": "pfpTest@gmail.com",
+            "role": "PUBLIC",
+            "first_name": "Success",
+            "last_name": "Nice"
+        },
+        "address": "123 street",
+        "city": "Montreal",
+        "province": "Quebec",
+        "postal_code": "A1B2C3",
+        "phone_number": "123 456 1234",
+        "avatar": "https://soen390-team18-s3.s3.amazonaws.com/avatar_images/testpfp.jpg?AWSAccessKeyId=AKIAUSU5ZBEMQ2AMDONI&Signature=E4WY6sijV6vr2YYXTFHttbVnU1E%3D&Expires=1712992241",
+        "type": "OWNER",
+        "condo_units": []
+    },
+    {
+        "user": {
+            "id": 7,
+            "email": "testuser123@example.com",
+            "role": "PUBLIC",
+            "first_name": "Jennifer",
+            "last_name": "Lennon"
+        },
+        "address": "",
+        "city": "",
+        "province": "",
+        "postal_code": "",
+        "phone_number": "",
+        "avatar": "https://soen390-team18-s3.s3.amazonaws.com/avatar_images/pp.jpg?AWSAccessKeyId=AKIAUSU5ZBEMQ2AMDONI&Signature=mP5JxyzMktkZu6ZLqD4VsDJbQkY%3D&Expires=1712992241",
+        "type": "OWNER",
+        "condo_units": []
+    },
+    {
+        "user": {
+            "id": 9,
+            "email": "joud.babikk@gmail.com",
+            "role": "PUBLIC",
+            "first_name": "JoudPublic",
+            "last_name": "BabikPublic"
+        },
+        "address": "123 public address",
+        "city": "Montreal",
+        "province": "Quebec",
+        "postal_code": "H3G1H4",
+        "phone_number": "5149132938",
+        "avatar": "https://soen390-team18-s3.s3.amazonaws.com/avatar_images/pp.jpg?AWSAccessKeyId=AKIAUSU5ZBEMQ2AMDONI&Signature=mP5JxyzMktkZu6ZLqD4VsDJbQkY%3D&Expires=1712992241",
+        "type": "OWNER",
+        "condo_units": []
+    },
+    {
+        "user": {
+            "id": 10,
+            "email": "j_babik@live.concordia.ca",
+            "role": "PUBLIC",
+            "first_name": "joudpublic",
+            "last_name": "babikpublic"
+        },
+        "address": "123 address",
+        "city": "Montreal",
+        "province": "Quebec",
+        "postal_code": "h1h1h1",
+        "phone_number": "5115115111",
+        "avatar": "https://soen390-team18-s3.s3.amazonaws.com/avatar_images/pp.jpg?AWSAccessKeyId=AKIAUSU5ZBEMQ2AMDONI&Signature=mP5JxyzMktkZu6ZLqD4VsDJbQkY%3D&Expires=1712992241",
+        "type": "OWNER",
+        "condo_units": []
+    }
+]}
